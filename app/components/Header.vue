@@ -9,7 +9,7 @@
         </div>
         <div class="flex items-center gap-6">
           <div class="flex items-center gap-[37px]">
-            <p class="text-sm hover:text-[#C8A96E] cursor-pointer">Kurslar</p>
+            <nuxt-link to="/kursler" class="text-sm hover:text-[#C8A96E] cursor-pointer">Kurslar</nuxt-link>
             <nuxt-link to="/blog" class="text-sm hover:text-[#C8A96E] cursor-pointer">Blog</nuxt-link>
           </div>
           <button class="bg-white text-[#2D2D2D] text-sm font-medium px-5 py-1.5 rounded-full shadow-sm hover:shadow-md">

@@ -35,3 +35,32 @@ export const posts = [
     { id: 5, category: 'Master-klass', img: '/master-class2.png', date: '19-aprel, 2023', views: 187, title: '«Iwash» va «Carbon technologies» loyihalari asoschilari bilan «Shaxsiy', desc: 'Otabek Jurayev va Behzodbek Shoyunusovlar bilan master-klass' },
     { id: 6, category: 'Musobaqa', img: '/mizabaqa.png', date: '11-aprel, 2023', views: 270, title: '100 ga yaqin SMM-menejer va grafik dizaynerlar «Marketing Team»', desc: '«Marketing Team» jamoaviy musobaqasi' },
 ]
+
+export const courses = [
+    {
+        id: 1,
+        category: 'Dasturlash',
+        duration: '19 soat 24 daqiqa',
+        lessons: '126 ta',
+        title: 'Dasturlash foundation',
+        desc: 'Foundation dasturlash kursida C va Python dasturlash tillari va ular orqali dasturlashning mantiq-mohiyati o\'rgatiladi. Kurs davomida dasturlashning fundamental tushunchalari, dasturchining ishini yengillashtirib beradigan',
+        img: '/blue-laptop.png'
+    },
+    {
+        id: 2,
+        category: 'Dasturlash',
+        duration: '23 soat 7 daqiqa',
+        lessons: '93 ta',
+        title: '.NET mutaxassislik kursi',
+        desc: '.NET mutaxassislik kursi yordamida universal C# dasturlash tilida ishlovchi va o\'z faoliyatida .NET platformasi va texnologiyalaridan foydalanuvchi dasturchiga aylaning. C# dasturlash tilining imkoniyatlari va qo\'llash',
+        img: '/yellow-laptop.png'
+    },
+]
+
+
+export const courseGroups = ref([
+    [
+        { id: 1, title: 'Dasturlash foundation', desc: 'Foundation dasturlash kursida' },
+        { id: 2, title: '.NET mutaxassislik kursi', desc: '.NET mutaxassislik kursi' }
+    ]
+])

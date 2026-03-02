@@ -51,32 +51,34 @@
 
       <!-- Ko'proq -->
       <div class="flex items-center gap-1 mt-10 cursor-pointer w-fit">
-        <span class="text-[#0EB182] text-[14px] font-medium">Ko'proq</span>
-        <img src="/arrow-down.svg" alt="arrow" class="w-4 h-4">
+        <span class="text-[#0EB182] text-[14px] font-medium cursor-not-allowed">Ko'proq</span>
+        <button class=" bg-[#BA8D5B1A] rounded-full p-1 mt-[5px] cursor-not-allowed"><img src="/arrow-down.svg" alt="arrow" class="w-4 h-4"></button>
       </div>
     </div>
   </section>
   <section>
-    <div>
-      <div class="max-w-[1200px] m-auto px-8 py-12">
-        <h2 class="text-[28px] font-bold text-[#0F1826] mb-3">Yo'nalishlar bo'yicha kurslar</h2>
-        <p class="text-[#6B7280] text-[14px] mb-8">Zamonaviy sohalardan birini o'rganing va talabgir kasb egasi bo'ling!</p>
+    <div class="max-w-[1200px] m-auto px-8 py-12">
+      <h2 class="text-[28px] font-bold text-[#0F1826] mb-3">Yo'nalishlar bo'yicha kurslar</h2>
+      <p class="text-[#6B7280] text-[14px] mb-8">Zamonaviy sohalardan birini o'rganing va talabgir kasb egasi bo'ling!</p>
 
-        <div class="flex gap-4">
-          <div class="border border-[#E5E7EB] rounded-lg p-5 w-[220px] cursor-pointer hover:shadow-md transition-shadow duration-200">
-            <h3 class="text-[15px] font-semibold text-[#0F1826] mb-2">Dasturlash foundation</h3>
-            <p class="text-[#6B7280] text-[13px]">Foundation dasturlash kursida</p>
-          </div>
-
-          <div class="border border-[#E5E7EB] rounded-lg p-5 w-[220px] cursor-pointer hover:shadow-md transition-shadow duration-200">
-            <h3 class="text-[15px] font-semibold text-[#0F1826] mb-2">.NET mutaxassislik kursi</h3>
-            <p class="text-[#6B7280] text-[13px]">.NET mutaxassislik kursi</p>
-          </div>
+      <div v-for="(group, index) in courseGroups" :key="index" class="flex gap-4 mb-4">
+        <div
+            v-for="course in group"
+            :key="course.id"
+            class="border border-[#E5E7EB] rounded-lg p-5 w-[220px] cursor-pointer hover:shadow-md"
+        >
+          <h3 class="text-[15px] font-semibold text-[#0F1826] mb-2">{{ course.title }}</h3>
+          <p class="text-[#6B7280] text-[13px]">{{ course.desc }}</p>
         </div>
+      </div>
 
-        <div class="mt-8">
-          <span class="text-[#0EB182] text-[14px] font-medium cursor-pointer">Barcha kurslarni ko'rish</span>
-        </div>
+      <div class="mt-8">
+      <span
+          @click="toggleCourses"
+          class="text-[#0EB182] text-[14px] font-medium cursor-pointer hover:underline"
+      >
+        {{ isOpen ? "Barchasini yopish" : "Barcha kurslarni ko'rish" }}
+      </span>
       </div>
     </div>
   </section>
@@ -145,4 +147,25 @@
 <script setup>
   import { companies } from "~/data/mocks.js";
   import { persons } from "~/data/mocks.js";
+  import { courseGroups } from "~/data/mocks.js";
+  import { ref } from 'vue'
+
+
+  const isOpen = ref(false)
+
+  // 2. Tugma bosilganda 2-guruhni qo'shish yoki olib tashlash
+  const toggleCourses = () => {
+    if (!isOpen.value) {
+      // Xuddi o'sha 2 talik blokdan yana bitta qo'shish
+      courseGroups.value.push([
+        { id: 3, title: 'Frontend React.js', desc: 'Zamonaviy frontend kursi' },
+        { id: 4, title: 'Python Backend', desc: 'Django va FastAPI kursi' }
+      ])
+      isOpen.value = true
+    } else {
+      // Oxirgi qo'shilgan blokni olib tashlash
+      courseGroups.value.pop()
+      isOpen.value = false
+    }
+  }
 </script>
